@@ -20,13 +20,15 @@ def webServer(port=13331):
     try:
 
       try:
-        message = #Fill in start    #Fill in end
+#        message = #Fill in start    #Fill in end  
+        message = connectionSocket.recv(1024).decode()  # ADDED for receiving request into message
         filename = message.split()[1]
         f = open(filename[1:])
         outputdata = #Fill in start     #Fill in end
         
         #Send one HTTP header line into socket.
         #Fill in start
+        connectionSocket.send("HTTP/1.1 200 OK\r\n".encode())  # ADDED SUCCESS FROM PPT, ENCODE FOR TRANSMISSION
 
         #Fill in end
 
@@ -45,7 +47,7 @@ def webServer(port=13331):
 
         #Close client socket
         #Fill in start
-        connectionSocket.close()  ## ADDED CLOSE
+        connectionSocket.close()  # ADDED CLOSE
         #Fill in end
 
     except (ConnectionResetError, BrokenPipeError):
