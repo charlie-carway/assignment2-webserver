@@ -16,7 +16,7 @@ def webServer(port=13331):
     #Establish the connection
     #print('Ready to serve...')
 #    connectionSocket, addr = #Fill in start     #Fill in end
-    connectionSocket, addr = serverSocket.accept() 
+    connectionSocket, addr = serverSocket.accept()   # ADDED 
     try:
 
       try:
@@ -45,7 +45,7 @@ def webServer(port=13331):
 
         #Close client socket
         #Fill in start
-
+        connectionSocket.close()  ## ADDED CLOSE
         #Fill in end
 
     except (ConnectionResetError, BrokenPipeError):
