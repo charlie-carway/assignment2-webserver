@@ -9,13 +9,14 @@ def webServer(port=13331):
   #Prepare a server socket
   serverSocket.bind(("", port))
   #Fill in start
-
+  serverSocket.listen(1)  # ADDED LINE FROM TEXT - server listen for TCP connection requests from the client -() MAX QUEUED REQUESTS
   #Fill in end
 
   while True:
     #Establish the connection
     #print('Ready to serve...')
-    connectionSocket, addr = #Fill in start      #Fill in end
+#    connectionSocket, addr = #Fill in start     #Fill in end
+    connectionSocket, addr = serverSocket.accept() 
     try:
 
       try:
