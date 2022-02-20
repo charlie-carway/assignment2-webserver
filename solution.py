@@ -21,10 +21,11 @@ def webServer(port=13331):
 
       try:
 #        message = #Fill in start    #Fill in end  
-        message = connectionSocket.recv(1024).decode()  # ADDED for receiving request into message
+        message = connectionSocket.recv(1024).decode()  # ADDED for receiving request into message -- SHOULD IT BE DECODED?
         filename = message.split()[1]
         f = open(filename[1:])
-        outputdata = #Fill in start     #Fill in end
+#        outputdata = #Fill in start     #Fill in end
+        outputdata = f.read()    # ADDED TO READ INCOMING FILE
         
         #Send one HTTP header line into socket.
         #Fill in start
@@ -41,6 +42,8 @@ def webServer(port=13331):
       except IOError:
         # Send response message for file not found (404)
         #Fill in start
+
+        connectionSocket.send("HTTP/1.1 404 Not Found\r\n".encode())  # ADDED 404 FROM PPT, ENCODE FOR TRANSMISSION
 
         #Fill in end
 
